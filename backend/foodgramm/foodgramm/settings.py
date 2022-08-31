@@ -10,7 +10,7 @@ load_dotenv()
 SECRET_KEY = os.getenv('KEY')
 
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'users',
     'recipes',
 ]
+
+AUTH_USER_MODEL = 'users.User'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,7 +77,6 @@ REST_FRAMEWORK = {
     'UPLOAD_FILES_USE_URL': False,
 }
 
-AUTH_USER_MODEL = 'users.User'
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=4),
