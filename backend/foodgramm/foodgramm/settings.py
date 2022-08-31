@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'colorfield',
     'api',
     'users',
-    'recipes',
+    'recipe',
 ]
 
 AUTH_USER_MODEL = 'users.User'
