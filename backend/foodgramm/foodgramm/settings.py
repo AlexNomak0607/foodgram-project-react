@@ -7,10 +7,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 load_dotenv()
 
-SECRET_KEY = os.getenv('KEY')
+SECRET_KEY = '5_do7h@kvj_s+&y0=kuojt9^@umnh1-fboe=bv#gq2)^2sv+4o'
 
-
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -45,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'foodgram.urls'
+ROOT_URLCONF = 'foodgramm.urls'
 
 TEMPLATES = [
     {
@@ -63,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'foodgram.wsgi.application'
+WSGI_APPLICATION = 'foodgramm.wsgi.application'
 
 
 REST_FRAMEWORK = {
