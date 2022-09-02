@@ -4,7 +4,7 @@ from .models import Follow, User
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('pk','email', 'username',
+    list_display = ('pk', 'email', 'username',
                     'password', 'first_name', 'last_name',
                     'is_staff')
     search_fields = ('email', 'name')

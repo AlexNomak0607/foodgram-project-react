@@ -7,7 +7,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 load_dotenv()
 
-SECRET_KEY = '5_do7h@kvj_s+&y0=kuojt9^@umnh1-fboe=bv#gq2)^2sv+4o'
+SECRET_KEY = 'e!44g)e(=0c822ss6gh_5#&87wjgf+0bs)&al2*s*k%0h#8bl5'
+
 
 DEBUG = False
 
@@ -26,13 +27,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'colorfield',
-    'api',
     'users',
-    'recipe',
+    'recipes',
+    'api',
 ]
-
-AUTH_USER_MODEL = 'users.User'
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -44,7 +42,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'foodgramm.urls'
+ROOT_URLCONF = 'foodgram.urls'
 
 TEMPLATES = [
     {
@@ -62,7 +60,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'foodgramm.wsgi.application'
+WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 
 REST_FRAMEWORK = {
@@ -76,21 +74,24 @@ REST_FRAMEWORK = {
     'UPLOAD_FILES_USE_URL': False,
 }
 
+AUTH_USER_MODEL = 'users.User'
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=4),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
-
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('DB_ENGINE', default='django.db.backends.postgresql'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+        'ENGINE': os.getenv(
+            'DB_ENGINE',
+            default='django.db.backends.postgresql'
+        ),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT')
     }
 }
 
@@ -112,7 +113,6 @@ DJOSER = {
 }
 
 dj = 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':

@@ -7,22 +7,18 @@ from .models import (Favorites,
                      ShoppingCart,
                      Tag)
 
-class IngredientAdmin(admin.ModelAdmin):
-    list_display = (
-        'pk', 'name', 'measurement_unit'
-    )
-    search_fields = ('name', )
-    list_filter = ('name', )
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'name', 'color', 'slug')
+    search_fields = ('slug', )
+    list_filter = ('slug', )
     empty_value_display = '-empty-'
 
 
-
-class TagAdmin(admin.ModelAdmin):
-    list_display = (
-        'pk', 'name', 'color', 'slug'
-    )
-    search_fields = ('slug', )
-    list_filter = ('slug', )
+class IngredientAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'name', 'measurement_unit')
+    search_fields = ('name', )
+    list_filter = ('name', )
     empty_value_display = '-empty-'
 
 
@@ -31,9 +27,7 @@ class IngredientRecipeAdmin(admin.ModelAdmin):
 
 
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = (
-        'pk', 'author', 'name', 'favorited_count'
-    )
+    list_display = ('pk', 'author', 'name', 'favorited_count')
     search_fields = ('name', )
     list_filter = ('author', 'name', 'tags')
     empty_value_display = '-empty-'
@@ -57,8 +51,8 @@ class ShoppingCartAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
 
 
-admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(Favorites, FavoritesAdmin)
 admin.site.register(ShoppingCart, ShoppingCartAdmin)

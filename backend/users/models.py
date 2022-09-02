@@ -7,7 +7,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True,
                               verbose_name='email')
     username = models.CharField(
-        max_length=50,
+        max_length=150,
         unique=True,
         verbose_name='username'
     )
@@ -16,11 +16,11 @@ class User(AbstractUser):
         verbose_name='Пароль'
     )
     first_name = models.CharField(
-        max_length=50,
+        max_length=150,
         verbose_name='Имя'
     )
     last_name = models.CharField(
-        max_length=50,
+        max_length=150,
         verbose_name='Фамилия'
     )
     is_staff = models.BooleanField(default=False)

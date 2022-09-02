@@ -1,26 +1,9 @@
 from colorfield.fields import ColorField
 from django.contrib.auth import get_user_model
-from django.core.validators import MinValueValidator
 from django.db import models
+from django.core.validators import MinValueValidator
 
 User = get_user_model()
-
-
-class Ingredient(models.Model):
-    name = models.CharField(
-        max_length=100,
-        unique=True,
-        verbose_name='Наименование'
-    )
-    measurement_unit = models.CharField(max_length=100,
-                                        verbose_name='Единицы измерения')
-
-    class Meta:
-        verbose_name = 'Ингредиент'
-        verbose_name_plural = 'Ингредиенты'
-
-    def __str__(self):
-        return self.name
 
 
 class Tag(models.Model):
@@ -29,13 +12,32 @@ class Tag(models.Model):
         max_length=50,
         verbose_name='Наименование'
     )
-    color = ColorField(verbose_name='Цвет')
+    color = ColorField(
+        verbose_name='Цвет'
+    )
     slug = models.SlugField(unique=True,
                             verbose_name='Slug')
 
     class Meta:
         verbose_name = 'Тэг'
         verbose_name_plural = 'Тэги'
+
+    def __str__(self):
+        return self.name
+
+
+class Ingredient(models.Model):
+    name = models.CharField(
+        max_length=50,
+        unique=True,
+        verbose_name='Наименование'
+    )
+    measurement_unit = models.CharField(max_length=50,
+                                        verbose_name='Единицы измерения')
+
+    class Meta:
+        verbose_name = 'Ингредиент'
+        verbose_name_plural = 'Ингредиенты'
 
     def __str__(self):
         return self.name

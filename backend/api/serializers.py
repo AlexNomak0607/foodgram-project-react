@@ -3,7 +3,7 @@ from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from rest_framework.exceptions import MethodNotAllowed
 
-from recipe.models import (Favorites, Ingredient, NumberOfIngredients,
+from recipes.models import (Favorites, Ingredient, NumberOfIngredients,
                             Recipe, ShoppingCart, Tag)
 from users.serializers import UserSerializer
 
@@ -74,12 +74,7 @@ class NumberOfIngredientSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = NumberOfIngredients
-        fields = (
-            'id',
-            'name',
-            'measurement_unit',
-            'amount',
-        )
+        fields = ('id', 'name', 'measurement_unit', 'amount')
 
 
 class CreateIngredientSerializer(serializers.ModelSerializer):
@@ -103,14 +98,8 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
         fields = (
-            'id',
-            'author',
-            'ingredients',
-            'tags',
-            'image',
-            'name',
-            'text',
-            'cooking_time',
+            'id', 'author', 'ingredients', 'tags',
+            'image', 'name', 'text', 'cooking_time'
         )
 
     def validate(self, data):

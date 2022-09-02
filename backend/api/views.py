@@ -14,7 +14,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from users.models import User
-from recipe.models import Favorites, Ingredient, Recipe, ShoppingCart, Tag
+from recipes.models import Favorites, Ingredient, Recipe, ShoppingCart, Tag
 from .filters import RecipeFilter
 from .permissions import IsAuthorOrReadOnly
 from .paginations import CustomPageNumberPaginator
