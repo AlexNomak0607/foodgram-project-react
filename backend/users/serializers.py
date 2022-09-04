@@ -1,11 +1,10 @@
 from django.shortcuts import get_object_or_404
-from djoser.serializers import (UserCreateSerializer as
-                                DjoserUserCreateSerializer)
-from djoser.serializers import (UserSerializer as
-                                DjoserUserSerializer)
+from djoser.serializers import \
+    UserCreateSerializer as DjoserUserCreateSerializer
+from djoser.serializers import UserSerializer as DjoserUserSerializer
+from recipes.models import Recipe
 from rest_framework import serializers
 
-from recipes.models import Recipe
 from .models import Follow, User
 
 
@@ -35,8 +34,10 @@ class UserSerializer(DjoserUserSerializer):
         user = self.context['request'].user
         if user.is_anonymous:
             return False
-        return Follow.objects.filter(user__id=user.id,
-                                     author__id=author.id).exists()
+        return Follow.objects.filter(
+            user__id=user.id,
+            author__id=author.id
+        ).exists()
 
 
 class UserCreateSerializer(DjoserUserCreateSerializer):
@@ -68,9 +69,11 @@ class SubscriptionsSerializer(UserSerializer):
               if limit is not None
               else following.recipes.all())
         context = {'request': request}
-        return RecipeShoppingCartSerializer(qs,
-                                            many=True,
-                                            context=context).data
+        return RecipeShoppingCartSerializer(
+            qs,
+            many=True,
+            context=context
+        ).data
 
     def get_is_subscribed(self, obj):
         user = self.context['request'].user
@@ -109,10 +112,11 @@ class CreateFollowSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         request = self.context.get('request')
-        instance_user = get_object_or_404(User,
-                                          username=instance)
-        return ShowFollowSerializer(instance_user,
-                                    context={'request': request}).data
+        instance_user = get_object_or_404(User, username=instance)
+        return ShowFollowSerializer(
+            instance_user,
+            context={'request': request}
+        ).data
 
 
 class ShowFollowSerializer(serializers.ModelSerializer):
@@ -134,5 +138,4 @@ class ShowFollowSerializer(serializers.ModelSerializer):
 
     def get_is_subscribed(self, obj):
         user = self.context['request'].user
-        return Follow.objects.filter(author=obj,
-                                     user=user).exists()
+        return Follow.objects.filter(author=obj, user=user).exists()

@@ -1,5 +1,4 @@
 from django_filters import rest_framework as r_f
-
 from recipes.models import Recipe, Tag
 
 
@@ -21,9 +20,7 @@ class RecipeFilter(r_f.FilterSet):
 
     def filter(self, queryset, name, value):
         if name == 'is_in_shopping_cart' and value:
-            queryset = queryset.filter(
-                shopping_cart__user=self.request.user
-            )
+            queryset = queryset.filter(shopping_cart__user=self.request.user)
         return queryset
 
     class Meta:

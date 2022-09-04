@@ -1,7 +1,7 @@
 from colorfield.fields import ColorField
 from django.contrib.auth import get_user_model
-from django.db import models
 from django.core.validators import MinValueValidator
+from django.db import models
 
 User = get_user_model()
 
@@ -15,8 +15,7 @@ class Tag(models.Model):
     color = ColorField(
         verbose_name='Цвет'
     )
-    slug = models.SlugField(unique=True,
-                            verbose_name='Slug')
+    slug = models.SlugField(unique=True, verbose_name='Slug')
 
     class Meta:
         verbose_name = 'Тэг'
@@ -32,8 +31,10 @@ class Ingredient(models.Model):
         unique=True,
         verbose_name='Наименование'
     )
-    measurement_unit = models.CharField(max_length=50,
-                                        verbose_name='Единицы измерения')
+    measurement_unit = models.CharField(
+        max_length=50,
+        verbose_name='Единицы измерения'
+    )
 
     class Meta:
         verbose_name = 'Ингредиент'
@@ -50,8 +51,7 @@ class Recipe(models.Model):
         verbose_name='Автор',
         related_name='recipes'
     )
-    name = models.CharField(max_length=200,
-                            verbose_name='Название')
+    name = models.CharField(max_length=200, verbose_name='Название')
     image = models.ImageField(
         upload_to='recipes/images/',
         blank=True,
@@ -106,7 +106,8 @@ class TagRecipe(models.Model):
         Tag,
         null=True,
         on_delete=models.CASCADE,
-        verbose_name='Тэг')
+        verbose_name='Тэг'
+    )
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
@@ -181,8 +182,7 @@ class NumberOfIngredients(models.Model):
             related_name='amount',
             verbose_name='Ингредиент'
     )
-    amount = models.PositiveIntegerField(
-            verbose_name='Количество')
+    amount = models.PositiveIntegerField(verbose_name='Количество')
     recipe = models.ForeignKey(
             Recipe,
             on_delete=models.CASCADE,

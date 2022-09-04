@@ -4,9 +4,15 @@ from .models import Follow, User
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'email', 'username',
-                    'password', 'first_name', 'last_name',
-                    'is_staff')
+    list_display = (
+        'pk',
+        'email',
+        'username',
+        'password',
+        'first_name',
+        'last_name',
+        'is_staff'
+    )
     search_fields = ('email', 'name')
     list_filter = ('first_name', )
     empty_value_display = '-empty-'
