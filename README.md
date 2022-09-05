@@ -4,11 +4,6 @@
 ## Как запустить проект: 
 
  
-```shell
-Перейти в папку /infra 
-```
- 
-
 Запустить:
 ```shell
 docker-compose up -d
@@ -37,4 +32,4 @@ docker-compose exec web python collecstatic --no-input
 
 #### Основные доступные эндпоинты можно посмотреть по адресу http://localhost/redoc
 #### Адрес проекта: http://84.252.143.219/
-#### Admin: email yongbuck0607@mail.ru; password: 12345
+#### Admin: email youngbuck0607@mail.ru; password: 12345
