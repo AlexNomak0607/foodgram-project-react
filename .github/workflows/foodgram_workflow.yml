@@ -55,7 +55,6 @@ jobs:
            host: ${{ secrets.HOST }}
            username: ${{ secrets.USER }}
            key: ${{ secrets.SSH_KEY }}
-           passphrase: ${{ secrets.PASSPHRASE }}
            script: |
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram:v1.09.2022
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:v1.09.2022
