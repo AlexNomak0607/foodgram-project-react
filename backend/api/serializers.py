@@ -127,7 +127,6 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
                 'Выберите как минимум один ингредиент!',
             )
         ingredient_schedule: list = []
-
         for ingredient in ingredients:
             ingredient_id = ingredient['id']
             if ingredient_id in ingredient_schedule:
