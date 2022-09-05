@@ -1,5 +1,5 @@
 # Дипломный проект "Сайт публикаций рецептов"
-![workflow](https://github.com/batalova90/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+[![Django-app workflow](https://github.com/AlexNomak0607/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)](https://github.com/AlexNomak0607/foodgram-project-react/actions/workflows/foodgram_workflow.yml)
 
 ## Как запустить проект: 
 
